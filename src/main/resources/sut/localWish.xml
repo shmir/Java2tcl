@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sut>
+
+	<tcl>
+        <class>com.ignissoft.java2tcl.samples.TclShellLocalSystemObject</class>
+		<shellPath  edit="enable" description="Full path to Tcl interpreter">C:\Tcl8532\bin\wish85.exe</shellPath>
+    </tcl>
+    
+</sut>

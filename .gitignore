@@ -27,8 +27,8 @@ buildNumber.properties
 jsystem*
 runnerState*
 log
+.testdir.tmp
 
 .settings
-
 .classpath
 .project

@@ -17,9 +17,6 @@ import com.aqua.sysobj.conn.CliConnectionImpl;
 import jsystem.framework.analyzer.AnalyzerParameter;
 import systemobject.terminal.Prompt;
 
-/**
- * @author guy.arieli
- */
 public class TclShellRemote extends TclShellImpl {
 	
 	CliConnectionImpl conn;
@@ -27,8 +24,6 @@ public class TclShellRemote extends TclShellImpl {
 	private StringBuffer buffer;
 	
 	private String tclPath = null;
-	
-	private Prompt[] connPrompts = null;
 
 	public TclShellRemote(CliConnectionImpl conn, String tclPath) throws Exception {
 		this.conn = conn;
@@ -40,13 +35,20 @@ public class TclShellRemote extends TclShellImpl {
 	 */
 	@Override
 	public void launch() throws Exception {
-		
-		connPrompts = conn.getPrompts();
-		Prompt[] propmts = new Prompt[]{new Prompt("% ", false, true)};
-		conn.setPrompts(propmts);
 
 		CliCommand cmd = new CliCommand(tclPath);
+		cmd.setTimeout(10 * 1000);
+		cmd.setPrompts(new Prompt[]{new Prompt("% ", false, true)});
 		conn.command(cmd);
+		if (cmd.isFailed()) {
+			throw cmd.getThrown();
+		}
+
+	}
+	
+	@Override
+	public void exit() {
+		conn.command(new CliCommand("exit"));
 	}
 
 	/**
@@ -68,20 +70,23 @@ public class TclShellRemote extends TclShellImpl {
 	 * @throws Exception
 	 */
 	@Override
-	public synchronized boolean command(String command) {
+	public synchronized boolean command(String command) throws Exception {
 		
-		TclCliCommand clicmd = new TclCliCommand(command);
-		clicmd.setSilent(true);
-		clicmd.setTimeout(getTimeout());
-		conn.command(clicmd);
-		AnalyzerParameter[] analyzers = clicmd.getAnalyzers();
+		TclCliCommand cmd = new TclCliCommand(command);
+		cmd.setSilent(true);
+		cmd.setTimeout(getTimeout());
+		conn.command(cmd);
+		if (cmd.isFailed()) {
+			throw cmd.getThrown();
+		}
+		AnalyzerParameter[] analyzers = cmd.getAnalyzers();
 		if (analyzers != null) {
 			for (int i = 0; i < analyzers.length; i++) {
 				conn.analyze(analyzers[i], true);
 			}
 		}
-		
-		this.buffer.append(clicmd.getResult());
+
+		this.buffer.append(cmd.getResult());
 		
 		return true;
 		
@@ -150,12 +155,6 @@ public class TclShellRemote extends TclShellImpl {
 			command.setErrorString(command.getReturnValue());
 		}
 		
-	}
-	
-	@Override
-	public void exit() {
-		conn.setPrompts(connPrompts);
-		command("exit");
 	}
 	
 	@Override

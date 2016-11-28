@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sut>
+
+	<tcl>
+        <class>com.ignissoft.java2tcl.samples.TclShellRemoteSystemObject</class>
+		<conn>
+	        <class>com.aqua.sysobj.conn.WindowsDefaultCliConnection</class>
+	    	<host>localhost</host>
+	    	<user>bgp2</user>
+	    	<password>bgp211</password>
+		</conn>
+		<shellPath  edit="enable" description="Full path to Tcl interpreter">C:\Tcl8532\bin\tclsh85.exe</shellPath>
+    </tcl>
+    
+</sut>
