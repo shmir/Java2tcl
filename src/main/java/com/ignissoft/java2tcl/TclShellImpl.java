@@ -1,12 +1,11 @@
-/*
- * Created on Mar 17, 2005
- * Copyright 2005-2010 Ignis Software Tools Ltd. All rights reserved.
+/**
+ * @author yoram@ignissoft.com
  */
 package com.ignissoft.java2tcl;
 
-import jsystem.utils.FileUtils;
-
 import com.aqua.sysobj.conn.CliApplication;
+
+import jsystem.utils.FileUtils;
 
 /**
  * @author guy.arieli

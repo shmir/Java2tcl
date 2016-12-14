@@ -1,10 +1,10 @@
+/**
+ * @author yoram@ignissoft.com
+ */
 package com.ignissoft.java2tcl;
 
 import java.io.Serializable;
 
-/**
- * @author yoram@ignissoft.com
- */
 public class ShellCommand implements Serializable {
 	
 	private static final long serialVersionUID = -4272716476298057979L;
@@ -145,9 +145,9 @@ public class ShellCommand implements Serializable {
 		
 		if (parameters != null) {
 			for (int i = 0; i < parameters.length; i++) {
-				paramsBuf.append('"');
+				paramsBuf.append('{');
 				paramsBuf.append(parameters[i].toString());
-				paramsBuf.append('"');
+				paramsBuf.append('}');
 				paramsBuf.append(' ');
 			}
 		}

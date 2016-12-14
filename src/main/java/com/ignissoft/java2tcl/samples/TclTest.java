@@ -1,5 +1,5 @@
-/*
- * Created on 08/05/2005
+/**
+ * @author yoram@ignissoft.com
  */
 package com.ignissoft.java2tcl.samples;
 
@@ -16,7 +16,7 @@ import com.ignissoft.java2tcl.ShellCommand;
 import junit.framework.SystemTestCase4;
 
 public class TclTest extends SystemTestCase4 {
-
+	
 	TclShellSystemObject tcl;
 	
 	@Before
@@ -26,7 +26,7 @@ public class TclTest extends SystemTestCase4 {
 		tcl.getShell().setPrintCommand(true);
 		tcl.getShell().setPrintReturn(true);
 	}
-
+	
 	@After
 	public void tearDown() {
 		tcl.getShell().exit();
@@ -50,7 +50,7 @@ public class TclTest extends SystemTestCase4 {
 		cmd = new ShellCommand("set dummy", "Hello World 2");
 		tcl.getShell().executeCommand(cmd);
 		assertTrue("ShellCommand constructor with parameters failed", cmd.getReturnValue().indexOf("Hello World 2") >= 0);
-
+		
 	}
 	
 }

@@ -1,6 +1,5 @@
-/*
- * Created on Mar 17, 2005
- * Copyright 2005-2010 Ignis Software Tools Ltd. All rights reserved.
+/**
+ * @author yoram@ignissoft.com
  */
 package com.ignissoft.java2tcl;
 
@@ -71,7 +70,7 @@ public class TclShellLocal extends TclShellImpl {
 	 */
 	@Override
 	public void launch() throws IOException {
-		p = Runtime.getRuntime().exec(new String[]{shellName}, null, dir);
+		p = Runtime.getRuntime().exec(new String[] { shellName }, null, dir);
 		in = p.getOutputStream();
 		err = p.getErrorStream();
 		out = new BufferedInputStream(p.getInputStream(), 8192 * 4);
@@ -104,7 +103,7 @@ public class TclShellLocal extends TclShellImpl {
 		// Write command to standard input
 		in.write(cmd.getBytes());
 		in.flush();
-
+		
 		// Get command execution time
 		long startTime = System.currentTimeMillis();
 		
@@ -274,7 +273,7 @@ public class TclShellLocal extends TclShellImpl {
 					in.flush();
 				}
 			} catch (IOException ignore) {
-				
+			
 			}
 			p.destroy();
 			p = null;

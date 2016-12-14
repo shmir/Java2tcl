@@ -1,6 +1,5 @@
-/*
- * Created on Mar 17, 2005
- * Copyright 2005-2010 Ignis Software Tools Ltd. All rights reserved.
+/**
+ * @author yoram@ignissoft.com
  */
 package com.ignissoft.java2tcl.samples;
 
@@ -13,7 +12,7 @@ public class TclShellLocalSystemObject extends TclShellSystemObject {
 	@Override
 	public void init() throws Exception {
 		super.init();
-		shell = new TclShellLocal(new File(getShellPath()));		
+		shell = new TclShellLocal(new File(getShellPath()));
 	}
 	
 }

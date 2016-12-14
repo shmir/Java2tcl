@@ -1,6 +1,5 @@
-/*
- * Created on Jan 23, 2006
- * Copyright 2005-2010 Ignis Software Tools Ltd. All rights reserved.
+/**
+ * @author yoram@ignissoft.com
  */
 package com.ignissoft.java2tcl;
 
@@ -13,10 +12,10 @@ public class TclCliCommand extends CliCommand {
 	public TclCliCommand(String command) {
 		super();
 		setCommands(new String[] { command });
-		setPrompts(new Prompt[]{new Prompt("% ", false, true)});		
-		addErrors("Command not found");		
+		setPrompts(new Prompt[] { new Prompt("% ", false, true) });
+		addErrors("Command not found");
 		addErrors("invalid command name");
-		setSilent(true);		
+		setSilent(true);
 	}
 	
 }

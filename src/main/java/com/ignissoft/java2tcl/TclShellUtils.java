@@ -1,9 +1,10 @@
-/*
- * Created on 01/2011
+/**
+ * @author yoram@ignissoft.com
  */
 package com.ignissoft.java2tcl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -42,7 +43,14 @@ public class TclShellUtils {
 	}
 	
 	public static String searchList(TclShell shell, String list, String value, boolean inLine, boolean all, boolean regExp, int index) {
-		String options = (regExp ? "-regexp" : "-exact") + " " + (inLine ? "-inline" : "") + " " + (all ? "-all" : "") + " " + (index >= 0 ? "-index " + index : "") + " ";
+		String options = (regExp ? "-regexp" : "-exact")
+				+ " "
+				+ (inLine ? "-inline" : "")
+				+ " "
+				+ (all ? "-all" : "")
+				+ " "
+				+ (index >= 0 ? "-index " + index : "")
+				+ " ";
 		return handelShellCommand(shell, new ShellCommand("lsearch " + options + "$" + list, value));
 	}
 	
@@ -78,13 +86,11 @@ public class TclShellUtils {
 		return handelShellCommand(shell, new ShellCommand("set returnValue $" + array + "(" + key + ")"));
 	}
 	
-	public static HashMap<String, String> list2JavaHashMap(TclShell shell, String list) {
-		getArray(shell, "list2JavaHashMapArray", list);
-		HashMap<String, String> hm = new HashMap<String, String>();
-		for (String name : TclShellUtils.handelShellCommand(shell, new ShellCommand("array names list2JavaHashMapArray")).split(" ")) {
-			hm.put(name, TclShellUtils.getArrayVal(shell, "list2JavaHashMapArray", name));
+	public static ArrayList<String> tclList2JavaList(TclShell shell, String list) {
+		if (list == null || list.equals("")) {
+			return new ArrayList<String>();
 		}
-		return hm;
+		return new ArrayList<String>(Arrays.asList(TclShellUtils.eval(shell, "join {" + list + "} \\t").split("\\t")));
 	}
 	
 	public static void source(TclShell shell, String file) {
@@ -100,8 +106,7 @@ public class TclShellUtils {
 	}
 	
 	public static String eval(TclShell shell, String command) {
-		// Note that we remove " inside the command  
-		return handelShellCommand(shell, new ShellCommand("eval \"" + command.replace("\"", "") + "\""));
+		return handelShellCommand(shell, new ShellCommand("eval {" + command + "}"));
 	}
 	
 	public static Object[] buildPropertiesString(HashMap<String, Object> properties) {

@@ -1,6 +1,5 @@
-/*
- * Created on Mar 17, 2005
- * Copyright 2005-2010 Ignis Software Tools Ltd. All rights reserved.
+/**
+ * @author yoram@ignissoft.com
  */
 package com.ignissoft.java2tcl;
 
@@ -24,7 +23,7 @@ public class TclShellRemote extends TclShellImpl {
 	private StringBuffer buffer;
 	
 	private String tclPath = null;
-
+	
 	public TclShellRemote(CliConnectionImpl conn, String tclPath) throws Exception {
 		this.conn = conn;
 		this.tclPath = tclPath;
@@ -35,22 +34,22 @@ public class TclShellRemote extends TclShellImpl {
 	 */
 	@Override
 	public void launch() throws Exception {
-
+		
 		CliCommand cmd = new CliCommand(tclPath);
 		cmd.setTimeout(10 * 1000);
-		cmd.setPrompts(new Prompt[]{new Prompt("% ", false, true)});
+		cmd.setPrompts(new Prompt[] { new Prompt("% ", false, true) });
 		conn.command(cmd);
 		if (cmd.isFailed()) {
 			throw cmd.getThrown();
 		}
-
+		
 	}
 	
 	@Override
 	public void exit() {
 		conn.command(new CliCommand("exit"));
 	}
-
+	
 	/**
 	 * Return command output
 	 * 
@@ -85,7 +84,7 @@ public class TclShellRemote extends TclShellImpl {
 				conn.analyze(analyzers[i], true);
 			}
 		}
-
+		
 		this.buffer.append(cmd.getResult());
 		
 		return true;
@@ -112,7 +111,7 @@ public class TclShellRemote extends TclShellImpl {
 			command.setErrorString(e.getMessage());
 			return;
 		}
-
+		
 		String scriptOutput = getResults();
 		if (scriptOutput.length() <= toSend.length()) {
 			command.setFail(true);
@@ -185,7 +184,7 @@ public class TclShellRemote extends TclShellImpl {
 	
 	@Override
 	public void source(InputStream stream, HashMap<String[], String> entryMap) throws IOException {
-		
+	
 	}
 	
 }

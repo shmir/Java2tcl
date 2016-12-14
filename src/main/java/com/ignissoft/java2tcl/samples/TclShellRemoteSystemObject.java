@@ -1,6 +1,5 @@
-/*
- * Created on Mar 17, 2005
- * Copyright 2005-2010 Ignis Software Tools Ltd. All rights reserved.
+/**
+ * @author yoram@ignissoft.com
  */
 package com.ignissoft.java2tcl.samples;
 
@@ -14,7 +13,7 @@ public class TclShellRemoteSystemObject extends TclShellSystemObject {
 	@Override
 	public void init() throws Exception {
 		super.init();
-		shell = new TclShellRemote(conn, getShellPath());		
+		shell = new TclShellRemote(conn, getShellPath());
 	}
 	
 }
