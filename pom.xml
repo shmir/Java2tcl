@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ignissoft</groupId>
 	<artifactId>java2tcl</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<repositories>
 		<repository>
 			<id>top-q</id>
@@ -14,13 +14,13 @@
 		<dependency>
 			<groupId>org.jsystemtest</groupId>
 			<artifactId>jsystemCommon</artifactId>
-			<version>6.1.00</version>
+			<version>6.1.05</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jsystemtest.systemobjects</groupId>
 			<artifactId>cli</artifactId>
-			<version>6.1.00</version>
+			<version>6.1.05</version>
 		</dependency>
 	</dependencies>
 	<build>
