@@ -14,13 +14,12 @@
 		<dependency>
 			<groupId>org.jsystemtest</groupId>
 			<artifactId>jsystemCommon</artifactId>
-			<version>6.1.00</version>
-			<scope>provided</scope>
+			<version>6.1.05</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jsystemtest.systemobjects</groupId>
 			<artifactId>cli</artifactId>
-			<version>6.1.00</version>
+			<version>6.1.05</version>
 		</dependency>
 	</dependencies>
 	<build>

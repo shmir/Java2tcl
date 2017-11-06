@@ -19,9 +19,6 @@ import java.util.regex.Pattern;
 
 import jsystem.utils.FileUtils;
 
-/**
- * @author guy.arieli
- */
 public class TclShellLocal extends TclShellImpl {
 	
 	private static final String ENTER = "\r\n";

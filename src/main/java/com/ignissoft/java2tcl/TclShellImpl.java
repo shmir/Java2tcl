@@ -7,9 +7,6 @@ import com.aqua.sysobj.conn.CliApplication;
 
 import jsystem.utils.FileUtils;
 
-/**
- * @author guy.arieli
- */
 public abstract class TclShellImpl extends CliApplication implements TclShell {
 	
 	private String prompt = "---DONE---";

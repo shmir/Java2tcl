@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-/**
- * @author shmir
- */
 public class TclShellUtils {
 	
 	public static String handelShellCommand(TclShell shell, ShellCommand cmd) {
@@ -123,6 +120,15 @@ public class TclShellUtils {
 			return true;
 		}
 		return false;
+	}
+	
+	public static HashMap<String, String> list2JavaHashMap(TclShell shell, String list) {
+		getArray(shell, "list2JavaHashMapArray", list);
+		HashMap<String, String> hm = new HashMap<String, String>();
+		for (String name : TclShellUtils.handelShellCommand(shell, new ShellCommand("array names list2JavaHashMapArray")).split(" ")) {
+			hm.put(name, TclShellUtils.getArrayVal(shell, "list2JavaHashMapArray", name));
+		}
+		return hm;
 	}
 	
 }
