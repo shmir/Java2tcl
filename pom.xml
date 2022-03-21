@@ -19,8 +19,14 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jsystemtest.systemobjects</groupId>
-			<artifactId>cli</artifactId>
+			<artifactId>jsystem-core-system-objects</artifactId>
 			<version>6.1.05</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>de.java2html</groupId>
+			<artifactId>java2html</artifactId>
+			<version>5.0</version>
 		</dependency>
 	</dependencies>
 	<build>
